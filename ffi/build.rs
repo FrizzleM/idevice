@@ -49,5 +49,8 @@ fn main() {
         .expect("failed to append plist.h");
 
     let f = std::fs::read_to_string("idevice.h").unwrap();
-    std::fs::write("../cpp/include/idevice.h", f).unwrap();
+    // Upstream also mirrors the header into ../cpp/include; that path doesn't
+    // exist in our vendored layout, so make it best-effort instead of panicking.
+    let _ = std::fs::create_dir_all("../cpp/include");
+    let _ = std::fs::write("../cpp/include/idevice.h", f);
 }
