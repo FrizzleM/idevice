@@ -125,4 +125,4 @@ default = ["full", "aws-lc"]
 cbindgen = "0.29.0"
 
 [lib]
-crate-type = ["staticlib", "cdylib", "rlib"]
+crate-type = ["rlib"]
